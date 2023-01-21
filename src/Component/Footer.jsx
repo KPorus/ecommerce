@@ -8,9 +8,9 @@ const Footer = () => {
       <Box className='px-4 mt-3 divide-y text-white' bgcolor={colors.primary[500]}>
         <div className='container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0'>
           <div className='lg:w-1/3'>
-            <a
+            <Link
               rel='noopener noreferrer'
-              href='#home'
+              to='/'
               className='flex justify-center space-x-4 lg:justify-start'>
               <div className='flex items-center justify-center w-12 h-12 rounded-full bg-violet-400'>
                 <svg
@@ -22,7 +22,7 @@ const Footer = () => {
                 </svg>
               </div>
               <span className='self-center text-2xl font-semibold'>tričko</span>
-            </a>
+            </Link>
           </div>
           <div className='grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4'>
             <div className='space-y-3'>

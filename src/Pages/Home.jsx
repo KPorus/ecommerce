@@ -145,7 +145,9 @@ const Home = () => {
         ))}
       </div>
       <div className='mt-10 flex justify-center'>
-        <Button variant='contained'>View All</Button>
+        <Button variant='contained'>
+          <Link to='/bestSeller'>View All</Link>
+        </Button>
       </div>
 
       {/* top rated product */}
@@ -172,7 +174,10 @@ const Home = () => {
         ))}
       </div>
       <div className='mt-10 mb-20 flex justify-center'>
-        <Button variant='contained'>View All</Button>
+        <Button variant='contained'>
+          {" "}
+          <Link to='/topRate'>View All</Link>
+        </Button>
       </div>
     </div>
   );

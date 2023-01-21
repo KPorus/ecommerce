@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import Loading from '../Component/Loading';
 import HomeNew from './HomeNew';
+import "./Home.css"
 
 const NewArrivals = () => {
       const { isLoading, data: NewProduct = [] } = useQuery({
@@ -20,7 +21,9 @@ const NewArrivals = () => {
       console.log(NewProduct)
     return (
       <div>
-        <div className='w-[100%] h-1/2 bg-zinc-900 text-white font-bold text-center py-20 text-xl'>New Arrivals</div>
+        <div className='new w-[100%] h-1/2 bg-zinc-900 text-white font-bold text-center py-20 text-xl'>
+          <span className='underLine'>New Arrivals</span>
+        </div>
         <div className='container mx-auto grid md:grid-cols-4 sm:grid-cols-3 grid-cols-1 justify-items-center gap-[1rem] mt-10'>
           {NewProduct.map((items) => (
             <HomeNew key={items._id} items={items}></HomeNew>

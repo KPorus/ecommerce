@@ -13,10 +13,9 @@ const HomeTop = ({ items}) => {
   return (
     <Card sx={{ maxWidth: 292 }} onClick={click}>
       <CardMedia
-        sx={{ objectFit: "cover" }}
+        sx={{ height: "74%", objectFit: "cover" }}
         component='img'
-        alt='green iguana'
-        height='140'
+        alt='Top Rate'
         image={image}
       />
       <CardContent>

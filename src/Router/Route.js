@@ -5,6 +5,8 @@ import About from "../Pages/About";
 import Products from "../Pages/Products";
 import Contact from "../Pages/Contact";
 import NewArrivals from "../Pages/NewArrivals";
+import BestSeller from "../Pages/BestSeller";
+import TopRate from "../Pages/TopRate";
 
 export const route = createBrowserRouter([
   {
@@ -30,6 +32,14 @@ export const route = createBrowserRouter([
       {
         path: "/newArivals",
         element: <NewArrivals />,
+      },
+      {
+        path: "/bestSeller",
+        element: <BestSeller />,
+      },
+      {
+        path: "/topRate",
+        element: <TopRate />,
       },
     ],
   },

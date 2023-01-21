@@ -59,7 +59,7 @@ function DrawerAppBar(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant='h6' component='div'>
-            tričko
+            <Link to="/">tričko</Link>
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "flex" } }}>
             <Stack direction='row' gap={4}>
