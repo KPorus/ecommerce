@@ -8,13 +8,27 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "./Home.css"
 import img1 from "../assets/banner/pexels-photo-1549200.jpeg"
 import img2 from "../assets/banner/pexels-spencer-selover-428340.jpg"
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import HomeBestSeller from './HomeBestSeller';
+import { useQuery } from '@tanstack/react-query';
 
 
 let img = [img1, img2];
 
 const Home = () => {
+  const {
+    isLoading,
+    data: product = [],
+  } = useQuery({
+    queryKey: ["Product"],
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:5000/homebestSelling`);
+      const data = await res.json();
+      return data;
+    },
+  });
+
     return (
       <div id='home'>
         <Swiper
@@ -33,7 +47,7 @@ const Home = () => {
                 <img src={img} alt='image'></img>
               </div>
               <div className='absolute z-1 text-white sm:top-52 '>
-                <h1 className='uppercase text-[0.9rem] font-semibold text-[#c4c4c4]'>
+                <h1 className='uppercase text-[0.9rem] md:text-[1rem] font-semibold text-[#c4c4c4]'>
                   Welcome To tričko(T-Shirt)
                 </h1>
                 <p className='text-[1.2rem] sm:text-4xl font-bold'>
@@ -47,13 +61,36 @@ const Home = () => {
                       fontWeight: "700",
                       fontSize: "1.2rem",
                     }}>
-                    <Link to="/products">see all</Link>
+                    <Link to='/products'>see all</Link>
                   </Button>
                 </a>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
+        <div className='flex sm:flex-row flex-col md:gap-28 mx-auto mt-14 container items-center'>
+          <Typography textAlign='left' fontWeight='800' fontSize='2rem' m={2}>
+            Best Selling Products
+            <hr className='h-1 bg-gray-500' />
+          </Typography>
+          <Typography
+            px={2}
+            sx={{
+              width: { md: "50%", sm: "80%", xs: "100%" },
+              marginX: "auto",
+            }}>
+            <blockquote>
+              "What you wear is how you present yourself to the world, especially
+              today, when human contacts are so quick. Fashion is instant
+              language."
+            </blockquote>
+          </Typography>
+        </div>
+        <div className='container mx-auto grid md:grid-cols-4 sm:grid-cols-3 grid-cols-1 justify-items-center gap-[0.5rem] mb-28 mt-10'>
+          {product.map((items) => (
+            <HomeBestSeller key={items._id} items={items}></HomeBestSeller>
+          ))}
+        </div>
       </div>
     );
 };
