@@ -1,8 +1,7 @@
-import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import React from 'react';
+import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 
-
-const HomeBestSeller = ({ items, isLoading }) => {
+const HomeTop = ({ items}) => {
   const { name, image, price, _id, category, publishedAt } = items;
   console.log(items);
   let click = () => {
@@ -11,7 +10,6 @@ const HomeBestSeller = ({ items, isLoading }) => {
     console.log(i);
   };
 
- 
   return (
     <Card sx={{ maxWidth: 292 }} onClick={click}>
       <CardMedia
@@ -39,4 +37,4 @@ const HomeBestSeller = ({ items, isLoading }) => {
   );
 };
 
-export default HomeBestSeller;
+export default HomeTop;
