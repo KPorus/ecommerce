@@ -10,11 +10,10 @@ import img1 from "../assets/banner/pexels-photo-1549200.jpeg";
 import img2 from "../assets/banner/pexels-spencer-selover-428340.jpg";
 import { Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import HomeBestSeller from "./HomeBestSeller";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../Component/Loading";
-import HomeTop from "./HomeTop";
-import HomeNew from "./HomeNew";
+import HomeNewArival from "./HomeNewArival";
+import Cards from "./Cards";
 
 let img = [img1, img2];
 
@@ -37,14 +36,7 @@ const Home = () => {
     },
   });
 
-  const { data: NewProduct = [] } = useQuery({
-    queryKey: ["NewProduct"],
-    queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/homeNewProducts`);
-      const data = await res.json();
-      return data;
-    },
-  });
+  
 
   if (isLoading) {
     <Loading />;
@@ -77,14 +69,16 @@ const Home = () => {
               </p>
               <a href='#'>
                 {" "}
-                <Button
-                  sx={{
-                    color: "#DBB660",
-                    fontWeight: "700",
-                    fontSize: "1.2rem",
-                  }}>
-                  <Link to='/products'>see all</Link>
-                </Button>
+                <Link to='/products'>
+                  <Button
+                    sx={{
+                      color: "#DBB660",
+                      fontWeight: "700",
+                      fontSize: "1.2rem",
+                    }}>
+                    see all
+                  </Button>
+                </Link>
               </a>
             </div>
           </SwiperSlide>
@@ -92,32 +86,11 @@ const Home = () => {
       </Swiper>
 
       {/* new arrival product */}
-      <div className='flex sm:flex-row flex-col-reverse md:gap-28 mx-auto mt-14 container items-center'>
-        <Typography
-          px={2}
-          sx={{
-            width: { md: "50%", sm: "80%", xs: "100%" },
-            marginX: "auto",
-          }}>
-          <blockquote>
-            ""Dress shabbily and they remember the dress; dress impeccably and
-            they notice the woman.""
-          </blockquote>
-        </Typography>
-        <Typography textAlign='left' fontWeight='800' fontSize='2rem' m={2}>
-          New Arrivals Products
-          <hr className='h-1 bg-gray-500' />
-        </Typography>
-      </div>
-      <div className='container mx-auto grid md:grid-cols-4 sm:grid-cols-3 grid-cols-1 justify-items-center gap-[0.5rem] mt-10'>
-        {NewProduct.map((items) => (
-          <HomeNew key={items._id} items={items}></HomeNew>
-        ))}
-      </div>
+      <HomeNewArival></HomeNewArival>
       <div className='mt-10 flex justify-center'>
-        <Button variant='contained'>
-          <Link to='/newArivals'>View All</Link>
-        </Button>
+        <Link to='/newArivals'>
+          <Button variant='contained'>View All</Button>
+        </Link>
       </div>
 
       {/* best selling product */}
@@ -141,13 +114,13 @@ const Home = () => {
       </div>
       <div className='container mx-auto grid md:grid-cols-4 sm:grid-cols-3 grid-cols-1 justify-items-center gap-[0.5rem]  mt-10'>
         {product.map((items) => (
-          <HomeBestSeller key={items._id} items={items}></HomeBestSeller>
+          <Cards key={items._id} items={items}></Cards>
         ))}
       </div>
       <div className='mt-10 flex justify-center'>
-        <Button variant='contained'>
-          <Link to='/bestSeller'>View All</Link>
-        </Button>
+        <Link to='/bestSeller'>
+          <Button variant='contained'>View All</Button>
+        </Link>
       </div>
 
       {/* top rated product */}
@@ -170,14 +143,13 @@ const Home = () => {
       </div>
       <div className='container mx-auto grid md:grid-cols-4 sm:grid-cols-3 grid-cols-1 justify-items-center gap-[0.5rem] mt-10'>
         {TopProduct.map((items) => (
-          <HomeTop key={items._id} items={items}></HomeTop>
+          <Cards key={items._id} items={items}></Cards>
         ))}
       </div>
       <div className='mt-10 mb-20 flex justify-center'>
-        <Button variant='contained'>
-          {" "}
-          <Link to='/topRate'>View All</Link>
-        </Button>
+        <Link to='/topRate'>
+          <Button variant='contained'> View All</Button>
+        </Link>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 
-const HomeTop = ({ items}) => {
+const Cards = ({ items }) => {
   const { name, image, price, _id, category, publishedAt } = items;
   console.log(items);
   let click = () => {
@@ -13,9 +13,10 @@ const HomeTop = ({ items}) => {
   return (
     <Card sx={{ maxWidth: 292 }} onClick={click}>
       <CardMedia
-        sx={{ height: "74%", objectFit: "cover" }}
+        sx={{height:"74%", objectFit: "cover" }}
         component='img'
-        alt='Top Rate'
+        alt='green iguana'
+        
         image={image}
       />
       <CardContent>
@@ -36,4 +37,4 @@ const HomeTop = ({ items}) => {
   );
 };
 
-export default HomeTop;
+export default Cards;

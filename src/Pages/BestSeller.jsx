@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import Loading from "../Component/Loading";
-import HomeBestSeller from "./HomeBestSeller";
 import "./Home.css";
+import Cards from "./Cards";
 
 const BestSeller = () => {
-  const { isLoading, data: BestProduct = [] } = useQuery({
+  const {refetch, isLoading, data: BestProduct = [] } = useQuery({
     queryKey: ["bestProduct"],
     queryFn: async () => {
       const res = await fetch(`http://localhost:5000/bestSelling`);
@@ -18,6 +18,7 @@ const BestSeller = () => {
     <Loading />;
   }
 
+  refetch()
   console.log(BestProduct);
   return (
     <div>
@@ -26,7 +27,7 @@ const BestSeller = () => {
       </div>
       <div className='container mx-auto grid md:grid-cols-4 sm:grid-cols-3 grid-cols-1 justify-items-center gap-[1rem] mt-10'>
         {BestProduct.map((items) => (
-          <HomeBestSeller key={items._id} items={items}></HomeBestSeller>
+          <Cards key={items._id} items={items}></Cards>
         ))}
       </div>
     </div>
