@@ -1,7 +1,21 @@
 import {  Typography } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import Loading from '../Component/Loading';
+import Cards from './Cards';
 
 const Products = () => {
+     const { isLoading, data: product = [] } = useQuery({
+       queryKey: ["Product"],
+       queryFn: async () => {
+         const res = await fetch(`http://localhost:5000/products`);
+         const data = await res.json();
+         return data;
+       },
+     });
+     if (isLoading) {
+       <Loading />;
+     }
     return (
       <div className='container mx-auto flex sm:flex-row flex-col'>
         <div className='sm:w-1/5'>
@@ -36,10 +50,10 @@ const Products = () => {
             <span>
               <input
                 type='radio'
-                value='NewArrivalls'
-                id='new'
-                name='new'></input>
-              <label htmlFor='new'> New Arrivals</label>
+                value='Arrivalls'
+                id=''
+                name=''></input>
+              <label htmlFor=''>  Arrivals</label>
             </span>
           </span>
           <div className='filterItem'>
@@ -57,6 +71,11 @@ const Products = () => {
           <Typography variant='h3' p={2} fontWeight={700}>
             All Product
           </Typography>
+          <div className='grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-items-center'>
+           {product.map((items) => (
+            <Cards key={items._id} items={items}></Cards>
+          ))}
+          </div>
         </div>
       </div>
     );
