@@ -7,7 +7,7 @@ const Cards = ({ items }) => {
   let click = () => {
     let i = 0;
     i++;
-    console.log(i);
+    console.log(_id);
   };
 
   return (
