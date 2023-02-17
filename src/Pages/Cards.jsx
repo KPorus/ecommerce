@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import Aos from "aos";
 import 'aos/dist/aos.css';
-Aos.init({ duration: 1500 });
+Aos.init({ duration: 1500, once: false });
 const Cards = ({ items }) => {
   const { name, image, price, _id, category, publishedAt } = items;
   console.log(items);

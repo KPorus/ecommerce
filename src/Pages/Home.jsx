@@ -14,7 +14,9 @@ import { useQuery } from "@tanstack/react-query";
 import Loading from "../Component/Loading";
 import HomeNewArival from "./HomeNewArival";
 import Cards from "./Cards";
-
+import Aos from "aos";
+import "aos/dist/aos.css";
+Aos.init({ duration: 1500, once: false });
 let img = [img1, img2];
 
 const Home = () => {
@@ -45,6 +47,7 @@ const Home = () => {
   return (
     <div id='home'>
       <Swiper
+        data-aos='flip-right'
         slidesPerView={1}
         spaceBetween={30}
         loop={true}

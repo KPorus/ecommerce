@@ -3,6 +3,9 @@ import React from "react";
 import Loading from "../Component/Loading";
 import "./Home.css";
 import Cards from "./Cards";
+import Aos from "aos";
+import "aos/dist/aos.css";
+Aos.init({ duration: 1500, once: false });
 
 const BestSeller = () => {
   const {refetch, isLoading, data: BestProduct = [] } = useQuery({
@@ -22,7 +25,9 @@ const BestSeller = () => {
   console.log(BestProduct);
   return (
     <div>
-      <div className='new w-[100%] h-1/2 bg-zinc-900 text-white font-bold text-center py-20 text-xl'>
+      <div
+        className='new w-[100%] h-1/2 bg-zinc-900 text-white font-bold text-center py-20 text-xl'
+        data-aos='flip-left'>
         <span className='underLine'>Best Selling Products</span>
       </div>
       <div className='container mx-auto grid md:grid-cols-4 sm:grid-cols-3 grid-cols-1 justify-items-center gap-[1rem] mt-10'>
