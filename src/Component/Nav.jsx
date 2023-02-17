@@ -37,6 +37,7 @@ function DrawerAppBar(props) {
           <Link to='/about'>About Us</Link>
           <Link to='/products'>Products</Link>
           <Link to='/contact'>Contact</Link>
+          <Link to='/login'>Login</Link>
         </Stack>
       </List>
     </Box>
@@ -59,7 +60,7 @@ function DrawerAppBar(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant='h6' component='div'>
-            <Link to="/">tričko</Link>
+            <Link to='/'>tričko</Link>
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "flex" } }}>
             <Stack direction='row' gap={4}>
@@ -67,6 +68,7 @@ function DrawerAppBar(props) {
               <Link to='/about'>About Us</Link>
               <Link to='/products'>Products</Link>
               <Link to='/contact'>Contact</Link>
+              <Link to='/login'>Login</Link>
             </Stack>
           </Box>
           <div className='flex gap-1'>

@@ -1,6 +1,8 @@
 import React from "react";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
-
+import Aos from "aos";
+import 'aos/dist/aos.css';
+Aos.init({ duration: 1500 });
 const Cards = ({ items }) => {
   const { name, image, price, _id, category, publishedAt } = items;
   console.log(items);
@@ -11,12 +13,15 @@ const Cards = ({ items }) => {
   };
 
   return (
-    <Card sx={{ maxWidth: 292 }} onClick={click}>
+    <Card
+      sx={{ maxWidth: 292 }}
+      onClick={click}
+      data-aos="zoom-in"
+      data-aos-easing='ease-out-cubic'>
       <CardMedia
-        sx={{height:"74%", objectFit: "cover" }}
+        sx={{ height: "74%", objectFit: "cover" }}
         component='img'
         alt='green iguana'
-        
         image={image}
       />
       <CardContent>

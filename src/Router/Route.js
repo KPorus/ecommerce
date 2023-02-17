@@ -7,6 +7,7 @@ import Contact from "../Pages/Contact";
 import NewArrivals from "../Pages/NewArrivals";
 import BestSeller from "../Pages/BestSeller";
 import TopRate from "../Pages/TopRate";
+import Login from "../Pages/Login";
 
 export const route = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ export const route = createBrowserRouter([
       {
         path: "/topRate",
         element: <TopRate />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },
